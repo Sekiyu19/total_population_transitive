@@ -1,6 +1,15 @@
 import React from 'react'
 
-const PrefectureCheckboxes = ({ prefectures }) => {
+const PrefectureCheckboxes = ({ prefectures, prefCodes, setPrefCodes }) => {
+
+  const handleChange = (e) => {
+    if (prefCodes.includes(e.target.value)) {
+      setPrefCodes(prefCodes.filter((prefCode) => prefCode !== e.target.value));   
+    } else {
+      setPrefCodes([...prefCodes, e.target.value]);
+    }
+  };
+
   return (
     <div>
       {prefectures.map(prefecture => (
@@ -8,6 +17,7 @@ const PrefectureCheckboxes = ({ prefectures }) => {
           <input
             type="checkbox"
             value={prefecture.prefCode}
+            onChange={handleChange}
           />
           {prefecture.prefName}
         </div>
