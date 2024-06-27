@@ -4,12 +4,14 @@ import './App.css';
 import Resas from './Resas/Resas.tsx';
 import { Prefecture } from './types/Prefecture.tsx';
 import { PopulationCompositionPerYear } from './types/PopulationCompositionPerYear.tsx';
-import PrefectureCheckboxes from './components/PrefectureCheckboxes.jsx';
+import PrefectureCheckboxes from './components/PrefectureCheckboxes.tsx';
+import LabelRadioButtons from './components/LabelRadioButtons.tsx';
 import PopulationCompositionPerYearGraph from './components/PopulationCompositionPerYearGraph.tsx';
 
 function App() {
   const [prefectures, setPrefectures] = useState<Prefecture[]>([]);
   const [prefCodes, setPrefCodes] = useState<string[]>([]);
+  const [label, setLabel] = useState<string>();
   const [populationCompositionPerYears, setPopulationCompositionPerYears] = useState<PopulationCompositionPerYear[]>([]);
 
   useEffect(() => {
@@ -89,14 +91,22 @@ function App() {
       });
   }, [prefCodes]);
 
+  function LabelRadioButtonsIfPopulationCompositionPerYearExist() {
+    if (populationCompositionPerYears[0] != null) {
+      return <LabelRadioButtons populationCompositionPerYear={populationCompositionPerYears[0]} label={label} setLabel={setLabel} />;
+    }
+    return ;
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        都道府県別の総人口推移
+        <h1>都道府県別の総人口推移</h1>
       </header>
       <body className="App-body">
         <PrefectureCheckboxes prefectures={prefectures} prefCodes={prefCodes} setPrefCodes={setPrefCodes} />
-        <PopulationCompositionPerYearGraph populationCompositionPerYears={populationCompositionPerYears} prefectures={prefectures} />
+        <LabelRadioButtonsIfPopulationCompositionPerYearExist />
+        <PopulationCompositionPerYearGraph populationCompositionPerYears={populationCompositionPerYears} prefectures={prefectures} label={label} />
       </body>
     </div>
   );

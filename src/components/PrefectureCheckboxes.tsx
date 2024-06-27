@@ -1,10 +1,11 @@
 import React from 'react'
+import { Prefecture } from '../types/Prefecture.tsx';
 
 const PrefectureCheckboxes = ({ prefectures, prefCodes, setPrefCodes }) => {
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { value: string; }; }) => {
     if (prefCodes.includes(e.target.value)) {
-      setPrefCodes(prefCodes.filter((prefCode) => prefCode !== e.target.value));   
+      setPrefCodes(prefCodes.filter((prefCode: string) => prefCode !== e.target.value));
     } else {
       setPrefCodes([...prefCodes, e.target.value]);
     }
@@ -12,15 +13,15 @@ const PrefectureCheckboxes = ({ prefectures, prefCodes, setPrefCodes }) => {
 
   return (
     <div>
-      {prefectures.map(prefecture => (
-        <div key={prefecture.prefCode}>
+      {prefectures.map((prefecture: Prefecture) => (
+        <label key={prefecture.prefCode}>
           <input
-            type="checkbox"
+            type='checkbox'
             value={prefecture.prefCode}
             onChange={handleChange}
           />
           {prefecture.prefName}
-        </div>
+        </label>
       ))}
     </div>
   )

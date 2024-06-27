@@ -1,15 +1,15 @@
 export type PopulationCompositionPerYear = {
   prefCode: string;
   boundaryYear: string;
-  data: data[];
+  data: Data[];
 };
 
-export type data = {
+export type Data = {
   label: string;
-  data: dataData[];
+  data: DataData[];
 };
 
-export type dataData = {
+export type DataData = {
   year: string;
   value: string;
 };
