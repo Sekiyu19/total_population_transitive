@@ -96,7 +96,7 @@ function App() {
       </header>
       <body className="App-body">
         <PrefectureCheckboxes prefectures={prefectures} prefCodes={prefCodes} setPrefCodes={setPrefCodes} />
-        <PopulationCompositionPerYearGraph populationCompositionPerYears={populationCompositionPerYears} />
+        <PopulationCompositionPerYearGraph populationCompositionPerYears={populationCompositionPerYears} prefectures={prefectures} />
       </body>
     </div>
   );

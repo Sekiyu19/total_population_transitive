@@ -4,12 +4,12 @@ export type PopulationCompositionPerYear = {
   data: data[];
 };
 
-type data = {
+export type data = {
   label: string;
   data: dataData[];
 };
 
-type dataData = {
+export type dataData = {
   year: string;
   value: string;
 };
