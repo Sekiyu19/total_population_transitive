@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/total_population_transitive/static/css/main.f400a3ce.css",
+    "main.js": "/total_population_transitive/static/js/main.e7e94ffd.js",
+    "static/js/453.4910d36d.chunk.js": "/total_population_transitive/static/js/453.4910d36d.chunk.js",
+    "index.html": "/total_population_transitive/index.html",
+    "main.f400a3ce.css.map": "/total_population_transitive/static/css/main.f400a3ce.css.map",
+    "main.e7e94ffd.js.map": "/total_population_transitive/static/js/main.e7e94ffd.js.map",
+    "453.4910d36d.chunk.js.map": "/total_population_transitive/static/js/453.4910d36d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f400a3ce.css",
+    "static/js/main.e7e94ffd.js"
+  ]
+}
