@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:fix": "npx prettier --write --single-quote 'src/**/*.tsx' && eslint --fix --ext .tsx src"
+    "lint:fix": "npx prettier --write --print-width 150 --single-quote 'src/**/*.tsx' && eslint --fix --ext .tsx src"
   },
   "eslintConfig": {
     "extends": [
