@@ -10,9 +10,9 @@ interface ChartData {
 const createChartData = (populationCompositionPerYears: PopulationCompositionPerYear[]): ChartData[] => {
   const yearMap: { [key: string]: ChartData } = {};
 
-  populationCompositionPerYears.forEach(populationCompositionPerYear => {
-    populationCompositionPerYear.data.forEach(data => {
-      data.data.forEach(dataData => {
+  populationCompositionPerYears.forEach((populationCompositionPerYear) => {
+    populationCompositionPerYear.data.forEach((data) => {
+      data.data.forEach((dataData) => {
         if (!yearMap[dataData.year]) {
           yearMap[dataData.year] = { year: dataData.year };
         }
@@ -33,32 +33,36 @@ const generateRandomColor = (): string => {
   return color;
 };
 
-const PopulationCompositionPerYearGraph = ( {populationCompositionPerYears, prefectures, label} ) => {
-  
+const PopulationCompositionPerYearGraph = ({ populationCompositionPerYears, prefectures, label }) => {
   const chartData: ChartData[] = createChartData(populationCompositionPerYears);
 
   return (
-    <div className='populationCompositionPerYearGraph'>
+    <div className="populationCompositionPerYearGraph">
       <ResponsiveContainer width="100%" height={400}>
         <LineChart
           data={chartData}
           margin={{
-            top: 80, right: 100, left: 50, bottom: 5,
+            top: 80,
+            right: 100,
+            left: 50,
+            bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="year" label={{ value: '年度', position: 'insideRight', offset: -60 }}/>
+          <XAxis dataKey="year" label={{ value: '年度', position: 'insideRight', offset: -60 }} />
           <YAxis label={{ value: '人口数', position: 'insideTop', offset: -30 }} />
           <Tooltip />
           <Legend />
-          {populationCompositionPerYears.flatMap((populationCompositionPerYear: { data: Data[]; prefCode: string; }) =>
-            <Line
-              type="natural"
-              dataKey={`${populationCompositionPerYear.prefCode}-${label}`}
-              name={prefectures[Number(populationCompositionPerYear.prefCode) - 1].prefName}
-              stroke={generateRandomColor()}
-              activeDot={{ r: 8 }}
-            />
+          {populationCompositionPerYears.flatMap(
+            (populationCompositionPerYear: { data: Data[]; prefCode: string }) => (
+              <Line
+                type="natural"
+                dataKey={`${populationCompositionPerYear.prefCode}-${label}`}
+                name={prefectures[Number(populationCompositionPerYear.prefCode) - 1].prefName}
+                stroke={generateRandomColor()}
+                activeDot={{ r: 8 }}
+              />
+            )
             // populationCompositionPerYear.data.map((data: { label: string; }) => (
             //   <Line
             //     type="monotone"
@@ -73,6 +77,6 @@ const PopulationCompositionPerYearGraph = ( {populationCompositionPerYears, pref
       </ResponsiveContainer>
     </div>
   );
-}
+};
 
-export default PopulationCompositionPerYearGraph
+export default PopulationCompositionPerYearGraph;

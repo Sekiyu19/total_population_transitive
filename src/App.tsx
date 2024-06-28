@@ -68,7 +68,7 @@ function App() {
 
     async function fetchPopulationCompositionPerYears(): Promise<PopulationCompositionPerYear[]> {
       try {
-        const promises = prefCodes.map(prefCode => fetchPopulationCompositionPerYear(prefCode));
+        const promises = prefCodes.map((prefCode) => fetchPopulationCompositionPerYear(prefCode));
         const response = await Promise.all(promises);
         if (response) {
           return response as PopulationCompositionPerYear[];
