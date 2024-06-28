@@ -1,4 +1,3 @@
-import React from 'react'
 import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import { PopulationCompositionPerYear, Data } from '../../types/PopulationCompositionPerYear.tsx';
 import './populationCompositionPerYearGraph.css';

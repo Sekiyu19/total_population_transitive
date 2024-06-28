@@ -1,4 +1,3 @@
-import React from 'react'
 import { Data } from '../../types/PopulationCompositionPerYear.tsx';
 import './labelRadioButtons.css';
 

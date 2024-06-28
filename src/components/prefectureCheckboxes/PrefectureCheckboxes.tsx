@@ -1,4 +1,3 @@
-import React from 'react'
 import { Prefecture } from '../../types/Prefecture.tsx';
 import './prefectureCheckboxes.css';
 
