@@ -1,0 +1,11 @@
+.labelRadioButtons{
+  width: 80vw;
+  margin: auto;
+}
+
+label{
+  font-size: max(1.5vh, 1.5vw);
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 min(2vh, 2vw);
+}

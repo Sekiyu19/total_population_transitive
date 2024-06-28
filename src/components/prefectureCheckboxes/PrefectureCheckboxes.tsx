@@ -1,5 +1,6 @@
 import React from 'react'
-import { Prefecture } from '../types/Prefecture.tsx';
+import { Prefecture } from '../../types/Prefecture.tsx';
+import './prefectureCheckboxes.css';
 
 const PrefectureCheckboxes = ({ prefectures, prefCodes, setPrefCodes }) => {
 
@@ -12,14 +13,11 @@ const PrefectureCheckboxes = ({ prefectures, prefCodes, setPrefCodes }) => {
   };
 
   return (
-    <div>
+    <div className='prefectureCheckboxes'>
+      <h2>都道府県</h2>
       {prefectures.map((prefecture: Prefecture) => (
-        <label key={prefecture.prefCode}>
-          <input
-            type='checkbox'
-            value={prefecture.prefCode}
-            onChange={handleChange}
-          />
+        <label className='prefectureCheckbox' key={prefecture.prefCode}>
+          <input type='checkbox' value={prefecture.prefCode} onChange={handleChange} />
           {prefecture.prefName}
         </label>
       ))}
