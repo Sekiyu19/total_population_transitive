@@ -4,14 +4,14 @@ import './App.css';
 import Resas from './Resas/Resas.tsx';
 import { Prefecture } from './types/Prefecture.tsx';
 import { PopulationCompositionPerYear } from './types/PopulationCompositionPerYear.tsx';
-import PrefectureCheckboxes from './components/PrefectureCheckboxes.tsx';
-import LabelRadioButtons from './components/LabelRadioButtons.tsx';
-import PopulationCompositionPerYearGraph from './components/PopulationCompositionPerYearGraph.tsx';
+import PrefectureCheckboxes from './components/prefectureCheckboxes/PrefectureCheckboxes.tsx';
+import LabelRadioButtons from './components/labelRadioButtons/LabelRadioButtons.tsx';
+import PopulationCompositionPerYearGraph from './components/populationCompositionPerYearGraph/PopulationCompositionPerYearGraph.tsx';
 
 function App() {
   const [prefectures, setPrefectures] = useState<Prefecture[]>([]);
   const [prefCodes, setPrefCodes] = useState<string[]>([]);
-  const [label, setLabel] = useState<string>();
+  const [label, setLabel] = useState<string>('総人口');
   const [populationCompositionPerYears, setPopulationCompositionPerYears] = useState<PopulationCompositionPerYear[]>([]);
 
   useEffect(() => {
@@ -91,13 +91,6 @@ function App() {
       });
   }, [prefCodes]);
 
-  function LabelRadioButtonsIfPopulationCompositionPerYearExist() {
-    if (populationCompositionPerYears[0] != null) {
-      return <LabelRadioButtons populationCompositionPerYear={populationCompositionPerYears[0]} label={label} setLabel={setLabel} />;
-    }
-    return ;
-  }
-
   return (
     <div className="App">
       <header className="App-header">
@@ -105,7 +98,7 @@ function App() {
       </header>
       <body className="App-body">
         <PrefectureCheckboxes prefectures={prefectures} prefCodes={prefCodes} setPrefCodes={setPrefCodes} />
-        <LabelRadioButtonsIfPopulationCompositionPerYearExist />
+        <LabelRadioButtons populationCompositionPerYear={populationCompositionPerYears[0]} label={label} setLabel={setLabel} />
         <PopulationCompositionPerYearGraph populationCompositionPerYears={populationCompositionPerYears} prefectures={prefectures} label={label} />
       </body>
     </div>
