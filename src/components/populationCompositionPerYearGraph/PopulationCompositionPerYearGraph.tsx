@@ -1,37 +1,8 @@
 import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import { PopulationCompositionPerYear, Data } from '../../types/PopulationCompositionPerYear.tsx';
+import { Data } from '../../types/PopulationCompositionPerYear.tsx';
 import './populationCompositionPerYearGraph.css';
-
-interface ChartData {
-  year: string;
-  [key: string]: string | number;
-}
-
-const createChartData = (populationCompositionPerYears: PopulationCompositionPerYear[]): ChartData[] => {
-  const yearMap: { [key: string]: ChartData } = {};
-
-  populationCompositionPerYears.forEach((populationCompositionPerYear) => {
-    populationCompositionPerYear.data.forEach((data) => {
-      data.data.forEach((dataData) => {
-        if (!yearMap[dataData.year]) {
-          yearMap[dataData.year] = { year: dataData.year };
-        }
-        yearMap[dataData.year][`${populationCompositionPerYear.prefCode}-${data.label}`] = parseInt(dataData.value);
-      });
-    });
-  });
-
-  return Object.values(yearMap);
-};
-
-const generateRandomColor = (): string => {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
+import { generateRandomColor } from '../../util/ColorUtil.tsx';
+import { ChartData, createChartData } from './CreateChartData.tsx';
 
 const PopulationCompositionPerYearGraph = ({ populationCompositionPerYears, prefectures, label }) => {
   const chartData: ChartData[] = createChartData(populationCompositionPerYears);
